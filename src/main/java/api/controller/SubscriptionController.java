@@ -1,14 +1,11 @@
 package api.controller;
 
-import api.dto.common.ApiResponse;
 import api.dto.subscription.SubscriptionAmountRequest;
 import api.dto.subscription.SubscriptionResponse;
 import api.service.SubscriptionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.security.Principal;
 
 
 @RestController
@@ -18,50 +15,50 @@ public class SubscriptionController {
   private final SubscriptionService subscriptionService;
 
   @PostMapping("/create/{cardId}")
-  public ResponseEntity<ApiResponse<SubscriptionResponse>> createSubscription(
+  public ResponseEntity<SubscriptionResponse> createSubscription(
       @PathVariable Long cardId) throws Exception {
     SubscriptionResponse subscription = subscriptionService.createSubscription(cardId);
-    return ResponseEntity.ok(new ApiResponse<>("Subscription created successfully", subscription));
+    return ResponseEntity.ok(subscription);
   }
 
   @DeleteMapping("/cancel")
-  public ResponseEntity<ApiResponse<SubscriptionResponse>> cancelSubscription() throws Exception {
+  public ResponseEntity<SubscriptionResponse> cancelSubscription() throws Exception {
     SubscriptionResponse subscription = subscriptionService.cancelSubscription();
-    return ResponseEntity.ok(new ApiResponse<>("Subscription cancelled successfully", subscription));
+    return ResponseEntity.ok(subscription);
   }
 
   @PutMapping("/change-payment-method/{cardId}")
-  public ResponseEntity<ApiResponse<SubscriptionResponse>> updatePaymentMethod(
+  public ResponseEntity<SubscriptionResponse> updatePaymentMethod(
       @PathVariable Long cardId) throws Exception {
     SubscriptionResponse subscription = subscriptionService.updatePaymentMethod(cardId);
-    return ResponseEntity.ok(new ApiResponse<>("Payment method updated successfully", subscription));
+    return ResponseEntity.ok(subscription);
   }
 
   @GetMapping
-  public ResponseEntity<ApiResponse<SubscriptionResponse>> getSubscription() {
+  public ResponseEntity<SubscriptionResponse> getSubscription() {
     SubscriptionResponse subscription = subscriptionService.getSubscription();
-    return ResponseEntity.ok(new ApiResponse<>("User subscription", subscription));
+    return ResponseEntity.ok(subscription);
   }
 
   @PutMapping("/amount/overwrite")
-  public ResponseEntity<ApiResponse<SubscriptionResponse>> overwriteAmount(
+  public ResponseEntity<SubscriptionResponse> overwriteAmount(
       @RequestBody SubscriptionAmountRequest request
   ) {
     SubscriptionResponse response = subscriptionService.overwriteAmount(request.getAmount());
-    return ResponseEntity.ok(new ApiResponse<>("Subscription amount overwritten successfully", response));
+    return ResponseEntity.ok(response);
   }
 
   @PutMapping("/amount/increase")
-  public ResponseEntity<ApiResponse<SubscriptionResponse>> increaseAmount(
+  public ResponseEntity<SubscriptionResponse> increaseAmount(
       @RequestBody SubscriptionAmountRequest request
   ) {
     SubscriptionResponse response = subscriptionService.increaseAmount(request.getAmount());
-    return ResponseEntity.ok(new ApiResponse<>("Subscription amount increased successfully", response));
+    return ResponseEntity.ok(response);
   }
 
   @PutMapping("/amount/reset")
-  public ResponseEntity<ApiResponse<SubscriptionResponse>> resetAmount() {
+  public ResponseEntity<SubscriptionResponse> resetAmount() {
     SubscriptionResponse response = subscriptionService.resetAmount();
-    return ResponseEntity.ok(new ApiResponse<>("Subscription amount increased successfully", response));
+    return ResponseEntity.ok(response);
   }
 }

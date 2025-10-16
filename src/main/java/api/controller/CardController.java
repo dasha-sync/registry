@@ -18,15 +18,15 @@ public class CardController {
   private final CardService cardService;
 
   @PostMapping("/add")
-  public ResponseEntity<ApiResponse<CardResponse>> addCard(
+  public ResponseEntity<CardResponse> addCard(
       @Valid @RequestBody AddCardRequest request) throws Exception {
     CardResponse card = cardService.addCard(request);
-    return ResponseEntity.ok(new ApiResponse<>("Card added successfully", card));
+    return ResponseEntity.ok(card);
   }
 
   @GetMapping
-  public ResponseEntity<ApiResponse<List<CardResponse>>> getCards() {
+  public ResponseEntity<List<CardResponse>> getCards() {
     List<CardResponse> cards = cardService.getCards();
-    return ResponseEntity.ok(new ApiResponse<>("User cards", cards));
+    return ResponseEntity.ok(cards);
   }
 }

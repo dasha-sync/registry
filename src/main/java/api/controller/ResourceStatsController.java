@@ -17,38 +17,24 @@ public class ResourceStatsController {
   private final ResourceStatsService resourceStatsService;
 
   @PostMapping("/update")
-  public ResponseEntity<ApiResponse<ResourceResponse>> updateResources(
+  public ResponseEntity<ResourceResponse> updateResources(
       @RequestBody ResourceUpdateRequest request) {
 
     ResourceResponse response = resourceStatsService.updateResources(request);
-    return ResponseEntity.ok(
-        new ApiResponse<>("Resources updated successfully", response)
-    );
-  }
-
-  @PostMapping("/increment-calls")
-  public ResponseEntity<ApiResponse<ResourceResponse>> incrementCalls() {
-    ResourceResponse response = resourceStatsService.incrementCalls();
-    return ResponseEntity.ok(
-        new ApiResponse<>("Calls incremented successfully", response)
-    );
+    return ResponseEntity.ok(response);
   }
 
   @GetMapping
-  public ResponseEntity<ApiResponse<ResourceResponse>> getAll() {
+  public ResponseEntity<ResourceResponse> getAll() {
     ResourceResponse response = resourceStatsService.getAll();
-    return ResponseEntity.ok(
-        new ApiResponse<>("Current resource statistics", response)
-    );
+    return ResponseEntity.ok(response);
   }
 
   @PutMapping("/update-costs")
-  public ResponseEntity<ApiResponse<ResourceResponse>> updateCosts(
+  public ResponseEntity<ResourceResponse> updateCosts(
       @RequestBody ResourceCostRequest request) {
 
     ResourceResponse response = resourceStatsService.updateCost(request);
-    return ResponseEntity.ok(
-        new ApiResponse<>("Resource costs updated successfully", response)
-    );
+    return ResponseEntity.ok(response);
   }
 }

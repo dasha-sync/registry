@@ -9,7 +9,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -24,17 +27,30 @@ public class FaasService {
     log.debug("Saved {} metrics for func={}", metricsToSave.size(), event.getFuncName());
   }
 
-  public List<FaasResponse> getFaas() {
-    return faasRepository.findAll().stream()
-        .map(entity -> new FaasResponse(
-            entity.getId(),
-            entity.getFuncName(),
-            entity.getMetricName(),
-            entity.getMetricValue(),
-            entity.getTs()
-        ))
-        .toList();
+  public Map<String, Object> getFaas() {
+    List<Faas> entities = faasRepository.findAll();
+
+    Map<String, Map<String, List<Map<String, Object>>>> grouped = entities.stream()
+        .collect(Collectors.groupingBy(
+            Faas::getFuncName,
+            Collectors.groupingBy(
+                Faas::getMetricName,
+                Collectors.mapping(f -> {
+                  Map<String, Object> m = new LinkedHashMap<>();
+                  m.put("id", f.getId());
+                  m.put("metricValue", f.getMetricValue());
+                  m.put("ts", f.getTs());
+                  return m;
+                }, Collectors.toList())
+            )
+        ));
+
+    Map<String, Object> result = new LinkedHashMap<>();
+    result.put("message", "User FaaS functions");
+    result.put("data", grouped);
+    return result;
   }
+
 
   private List<Faas> buildMetrics(MetricsEvent event) {
     return event.toMetricsMap().entrySet().stream()

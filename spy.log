@@ -217,3 +217,27 @@
 1760566689983|2|statement|connection 0|url jdbc:p6spy:postgresql://localhost:5433/spay|select * from information_schema.sequences|select * from information_schema.sequences
 1760566693008|1|statement|connection 0|url jdbc:p6spy:postgresql://localhost:5433/spay|select f1_0.id,f1_0.func_name,f1_0.metric_name,f1_0.metric_value,f1_0.ts from faas_metrics f1_0|select f1_0.id,f1_0.func_name,f1_0.metric_name,f1_0.metric_value,f1_0.ts from faas_metrics f1_0
 1760566693028|0|commit|connection 0|url jdbc:p6spy:postgresql://localhost:5433/spay||
+1760576027298|5|statement|connection 0|url jdbc:p6spy:postgresql://localhost:5433/spay|select * from information_schema.sequences|select * from information_schema.sequences
+1760611705049|3|statement|connection 0|url jdbc:p6spy:postgresql://localhost:5433/spay|select * from information_schema.sequences|select * from information_schema.sequences
+1760611705070|1|statement|connection 0|url jdbc:p6spy:postgresql://localhost:5433/spay|alter table if exists resource_stats add column traffic integer|alter table if exists resource_stats add column traffic integer
+1760611705071|0|statement|connection 0|url jdbc:p6spy:postgresql://localhost:5433/spay|alter table if exists resource_stats add column traffic_cost float(53)|alter table if exists resource_stats add column traffic_cost float(53)
+1760611877645|2|statement|connection 0|url jdbc:p6spy:postgresql://localhost:5433/spay|select * from information_schema.sequences|select * from information_schema.sequences
+1760611909728|2|statement|connection 0|url jdbc:p6spy:postgresql://localhost:5433/spay|select * from information_schema.sequences|select * from information_schema.sequences
+1760611980005|1|statement|connection 0|url jdbc:p6spy:postgresql://localhost:5433/spay|select f1_0.id,f1_0.func_name,f1_0.metric_name,f1_0.metric_value,f1_0.ts from faas_metrics f1_0|select f1_0.id,f1_0.func_name,f1_0.metric_name,f1_0.metric_value,f1_0.ts from faas_metrics f1_0
+1760611980019|0|commit|connection 0|url jdbc:p6spy:postgresql://localhost:5433/spay||
+1760612005419|0|statement|connection 0|url jdbc:p6spy:postgresql://localhost:5433/spay|select f1_0.id,f1_0.func_name,f1_0.metric_name,f1_0.metric_value,f1_0.ts from faas_metrics f1_0|select f1_0.id,f1_0.func_name,f1_0.metric_name,f1_0.metric_value,f1_0.ts from faas_metrics f1_0
+1760612005420|0|commit|connection 0|url jdbc:p6spy:postgresql://localhost:5433/spay||
+1760612014182|2|statement|connection 0|url jdbc:p6spy:postgresql://localhost:5433/spay|insert into faas_metrics (func_name,metric_name,metric_value,ts) values (?,?,?,?)|insert into faas_metrics (func_name,metric_name,metric_value,ts) values ('nameFG','nameMG',2,'2025-10-16T13:53:34.173+0300')
+1760612014191|0|commit|connection 0|url jdbc:p6spy:postgresql://localhost:5433/spay||
+1760612014960|0|statement|connection 0|url jdbc:p6spy:postgresql://localhost:5433/spay|insert into faas_metrics (func_name,metric_name,metric_value,ts) values (?,?,?,?)|insert into faas_metrics (func_name,metric_name,metric_value,ts) values ('nameFG','nameMG',2,'2025-10-16T13:53:34.959+0300')
+1760612014967|5|commit|connection 0|url jdbc:p6spy:postgresql://localhost:5433/spay||
+1760612015593|0|statement|connection 0|url jdbc:p6spy:postgresql://localhost:5433/spay|insert into faas_metrics (func_name,metric_name,metric_value,ts) values (?,?,?,?)|insert into faas_metrics (func_name,metric_name,metric_value,ts) values ('nameFG','nameMG',2,'2025-10-16T13:53:35.593+0300')
+1760612015600|5|commit|connection 0|url jdbc:p6spy:postgresql://localhost:5433/spay||
+1760612016186|0|statement|connection 0|url jdbc:p6spy:postgresql://localhost:5433/spay|insert into faas_metrics (func_name,metric_name,metric_value,ts) values (?,?,?,?)|insert into faas_metrics (func_name,metric_name,metric_value,ts) values ('nameFG','nameMG',2,'2025-10-16T13:53:36.185+0300')
+1760612016192|5|commit|connection 0|url jdbc:p6spy:postgresql://localhost:5433/spay||
+1760612016733|0|statement|connection 0|url jdbc:p6spy:postgresql://localhost:5433/spay|insert into faas_metrics (func_name,metric_name,metric_value,ts) values (?,?,?,?)|insert into faas_metrics (func_name,metric_name,metric_value,ts) values ('nameFG','nameMG',2,'2025-10-16T13:53:36.731+0300')
+1760612016734|0|commit|connection 0|url jdbc:p6spy:postgresql://localhost:5433/spay||
+1760612017330|0|statement|connection 0|url jdbc:p6spy:postgresql://localhost:5433/spay|insert into faas_metrics (func_name,metric_name,metric_value,ts) values (?,?,?,?)|insert into faas_metrics (func_name,metric_name,metric_value,ts) values ('nameFG','nameMG',2,'2025-10-16T13:53:37.329+0300')
+1760612017336|5|commit|connection 0|url jdbc:p6spy:postgresql://localhost:5433/spay||
+1760612022052|0|statement|connection 0|url jdbc:p6spy:postgresql://localhost:5433/spay|select f1_0.id,f1_0.func_name,f1_0.metric_name,f1_0.metric_value,f1_0.ts from faas_metrics f1_0|select f1_0.id,f1_0.func_name,f1_0.metric_name,f1_0.metric_value,f1_0.ts from faas_metrics f1_0
+1760612022056|0|commit|connection 0|url jdbc:p6spy:postgresql://localhost:5433/spay||

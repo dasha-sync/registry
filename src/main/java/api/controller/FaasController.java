@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 import api.dto.faas.FaasRequest;
 import api.dto.faas.FaasResponse;
@@ -23,10 +24,9 @@ public class FaasController {
   private final FaasService faasService;
 
   @GetMapping
-  public ResponseEntity<MetricResponse<List<FaasResponse>>> getFaas() {
-    List<FaasResponse> faas = faasService.getFaas();
-    List<FaasResponse> data = faas.isEmpty() ? null : faas;
-    return ResponseEntity.ok(new MetricResponse<>("User FaaS functions", data));
+  public ResponseEntity<Map<String, Object>> getFaas() {
+    Map<String, Object> faas = faasService.getFaas();
+    return ResponseEntity.ok(faas);
   }
 
   @PostMapping

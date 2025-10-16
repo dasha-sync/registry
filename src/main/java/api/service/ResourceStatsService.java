@@ -21,8 +21,7 @@ public class ResourceStatsService {
       ResourceStats stats = new ResourceStats();
       stats.setCpu(0);
       stats.setRam(0);
-      stats.setGb(0);
-      stats.setCalls(0);
+      stats.setTraffic(0);
       repository.save(stats);
       return stats;
     }
@@ -34,7 +33,7 @@ public class ResourceStatsService {
     ResourceStats stats = getOrCreate();
     if (dto.getCpu() != null) stats.setCpu(dto.getCpu());
     if (dto.getRam() != null) stats.setRam(dto.getRam());
-    if (dto.getGb() != null) stats.setGb(dto.getGb());
+    if (dto.getTraffic() != null) stats.setTraffic(dto.getTraffic());
     repository.save(stats);
     return mapToResponse(stats);
   }
@@ -44,20 +43,11 @@ public class ResourceStatsService {
   }
 
   @Transactional
-  public ResourceResponse incrementCalls() {
-    ResourceStats stats = getOrCreate();
-    stats.setCalls(stats.getCalls() + 1);
-    repository.save(stats);
-    return mapToResponse(stats);
-  }
-
-  @Transactional
   public ResourceResponse updateCost(ResourceCostRequest dto) {
     ResourceStats stats = getOrCreate();
     if (dto.getCpuCost() != null) stats.setCpuCost(dto.getCpuCost());
-    if (dto.getRamCost() != null) stats.setRamCost(dto.getRamCost());
     if (dto.getGbCost() != null) stats.setGbCost(dto.getGbCost());
-    if (dto.getCollCost() != null) stats.setCollCost(dto.getCollCost());
+    if (dto.getTrafficCost() != null) stats.setTrafficCost(dto.getTrafficCost());
     repository.save(stats);
     return mapToResponse(stats);
   }
@@ -66,12 +56,10 @@ public class ResourceStatsService {
     return new ResourceResponse(
         stats.getCpu(),
         stats.getRam(),
-        stats.getGb(),
-        stats.getCalls(),
+        stats.getTraffic(),
         stats.getCpuCost(),
-        stats.getRamCost(),
         stats.getGbCost(),
-        stats.getCollCost()
+        stats.getTrafficCost()
     );
   }
 }

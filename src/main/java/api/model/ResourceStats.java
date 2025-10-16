@@ -23,21 +23,15 @@ public class ResourceStats {
   private Integer ram;
 
   @Column
-  private Integer gb;
-
-  @Column
-  private Integer calls;
+  private Integer traffic;
 
   @Column
   private Double cpuCost;
 
   @Column
-  private Double ramCost;
-
-  @Column
   private Double gbCost;
 
   @Column
-  private Double collCost;
+  private Double trafficCost;
 }
 
